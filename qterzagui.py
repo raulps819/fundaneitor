@@ -119,6 +119,16 @@ def gammaeq(suelo: Suelo=None,prof: float=0,b: float=0):
     return coef
 
 def qult(suelo,prof,cimiento,b):
+    """
+    Devuelve la carga ultima para un tipo de cimiento dado
+        - suelo: suelo de cimentacion
+        - prof: prof de qult
+        - cimiento:
+            - rectangular = rectangular/cuadrado (1.3)
+            - redondo = redondo (1.3)
+            - continuo = continuo (1.0)
+        - b = ancho del cimiento a utilizar
+    """
     capa=suelo.ptcapa(prof,True)
     ci=suelo.capas[capa].c
     nci=nc(suelo,prof)

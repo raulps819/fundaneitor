@@ -4,7 +4,7 @@ con la teoria de rankine. Requiere el uso de objetos de tipo suelo
 """
 
 from suelo import Suelo
-from math import tan,sqrt,pi
+from math import cos, tan,sqrt,pi
 
 def ka(suelo: Suelo=None, capa: int=None):
     """
@@ -16,15 +16,21 @@ def ka(suelo: Suelo=None, capa: int=None):
     """
     if capa == None:
         ka=[]
-        i=0
         for capai in suelo.capas:
-            ka.append(round((tan(0.25*pi-0.5*capai.phi)**2),3))
+            alpha=capai.alpha
+            phi=capai.phi
+            kai=cos(alpha)*((cos(alpha) - sqrt(cos(alpha)**2-cos(phi)**2))/(cos(alpha) + sqrt(cos(alpha)**2-cos(phi)**2)))
+            ka.append(round(kai,3))
             pass
     else:
         capai=suelo.capas[capa]
-        ka=(round((tan(0.25*pi-0.5*capai.phi)**2),3))
+        #alpha=capai.alpha
+        alpha=0
+        phi=capai.phi
+        ka=cos(alpha)*((cos(alpha) - sqrt(cos(alpha)**2-cos(phi)**2))/(cos(alpha) + sqrt(cos(alpha)**2-cos(phi)**2)))  
         pass
-    return ka
+    return round(ka,3)
+
 
 def ptactivo(suelo,prof):
     """

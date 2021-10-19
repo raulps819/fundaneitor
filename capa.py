@@ -10,17 +10,19 @@ class Capa():
             -gamma_sat:  peso especifico saturado [kn/m3]
             -phi:        angulo de friccion [degrees]
             -c:          cohesion de la capa [kn/m2]
+            -alpha:      angulo de inclinacion de capa
         -Derivated Attributes
             -ko=: coef presion horizontal
     """
 
-    def __init__(self,_prof_init,_prof_final,_gamma,_gamma_sat,_phi,_c):
+    def __init__(self,_prof_init,_prof_final,_gamma,_gamma_sat,_phi,_c,_alpha: float=0.0):
         self.phi=_phi*pi/180
         self.prof_init=_prof_init
         self.prof_final=_prof_final
         self.gamma=_gamma
         self.gamma_sat=_gamma_sat
         self.c=_c
+        self.alpha=_alpha*pi/180
         pass
 
     @property
